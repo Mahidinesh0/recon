@@ -72,9 +72,7 @@ executed Nmap commands
 Example:
 
 
-===================================
- Nmap Recon Report
-===================================
+Nmap Recon Report:
 
 Target: 192.168.1.40
 
