@@ -29,6 +29,7 @@ Usage
 Clone the repository:
 
 git clone https://github.com/yourusername/repo-name.git
+
 cd repo-name
 
 Give execution permission:
@@ -42,6 +43,7 @@ Run the script:
 Example:
 
 ./recon.sh 192.168.1.40
+
 Example Workflow
 
 The script performs the following steps:
