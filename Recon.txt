@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Simple Nmap Recon Automation Script
+
+TARGET=$1
+OUTPUT="report.txt"
+
+if [ -z "$TARGET" ]; then
+    echo "Usage: $0 <target-ip>"
+    exit 1
+fi
+
+echo "[+] Starting scan on $TARGET"
+
+echo "===================================" > $OUTPUT
+echo " Nmap Recon Report" >> $OUTPUT
+echo "===================================" >> $OUTPUT
+echo "" >> $OUTPUT
+
+echo "[+] Running full port scan..."
+
+PORTS=$(nmap -Pn -p- --min-rate 1000 -T4 $TARGET | \
+grep open | \
+cut -d "/" -f1 | \
+tr '\n' ',' | \
+sed 's/,$//')
+
+echo "Open Ports: $PORTS" >> $OUTPUT
+echo "" >> $OUTPUT
+
+echo "[+] Running service scan..."
+
+nmap -Pn -sV -p $PORTS $TARGET >> $OUTPUT
+
+echo "" >> $OUTPUT
+
+echo "[+] Running NSE script scan..."
+
+nmap -Pn -sC -p $PORTS $TARGET >> $OUTPUT
+
+echo "" >> $OUTPUT
+echo "[+] Scan Completed" >> $OUTPUT
+
+echo "[+] Report saved as $OUTPUT"
