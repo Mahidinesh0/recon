@@ -28,7 +28,7 @@ Usage
 
 Clone the repository:
 
-git clone https://github.com/mahidinesh0/repo-name.git
+git clone https://github.com/Mahidinesh0/recon
 
 cd repo-name
 
